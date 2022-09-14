@@ -35,7 +35,7 @@ class Database extends Config
         'hostname' => 'localhost',
         'username' => 'root',
         'password' => '',
-        'database' => 'projectview',
+        'database' => 'projectviewer',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => true,
