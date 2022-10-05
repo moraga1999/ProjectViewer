@@ -198,5 +198,6 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
+	<?php //echo $tabla; ?>
 </body>
 </html>
