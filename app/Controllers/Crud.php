@@ -8,12 +8,11 @@ class Crud extends BaseController
     public function index()
     {
         $table = new \CodeIgniter\View\Table();
-        //$userModel = model('userModel');
-        //$users = $userModel->findAll();
-        // return view('crud', $data);
+        $userModel = model('userModel');
+        $users = $userModel->findAll();
+        return view('crud', $data);
 
-        //print_r($userModel->findAll());
-        // $data['tabla'] = $table->generate($users);
+        print_r($userModel->findAll());
     }
     public function create()
     {
