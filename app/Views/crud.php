@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+<title>CRUD Data Table</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="<?= base_url('css/crud.css') ?>">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
 <script>
 $(document).ready(function(){
 	// Activate tooltip
@@ -37,8 +37,10 @@ $(document).ready(function(){
 	});
 });
 </script>
+
 </head>
-<body>
+<body class="fondo">
+
 	<div class="container-xl">
 		<div class="table-responsive">
 			<div class="table-wrapper">
@@ -55,6 +57,7 @@ $(document).ready(function(){
 				<table class="table table-striped table-hover">
 					<thead>
 						<tr>
+							<th>Id</th>
 							<th>Nombre</th>
 							<th>Correo</th>
 							<th>Oficina</th>
@@ -63,17 +66,19 @@ $(document).ready(function(){
 						</tr>
 					</thead>
 					<tbody>
+						<?php foreach ($users as $user):?>
 						<tr>
-							<td>Thomas Hardy</td>
-							<td>thomashardy@mail.com</td>
-							<td>89 Chiaroscuro Rd, Portland, USA</td>
-							<td>(171) 555-2222</td>
+							<td><?php echo $user['id'];?></td>
+							<td><?php echo $user['name'];?></td>
+							<td><?php echo $user['email'];?></td>
+							<td><?php echo $user['office'];?></td>
+							<td><?php echo $user['phone'];?></td>
 							<td>
 								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
 								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
 							</td>
 						</tr>
-						
+    					<?php endforeach;?>
 					</tbody>
 				</table>
 				<div class="clearfix">
@@ -138,12 +143,14 @@ $(document).ready(function(){
 	<div id="editEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form>
+				<form action="<?= site_url('crud')?>" method=post>
 					<div class="modal-header">						
 						<h4 class="modal-title">Editar Profesor</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-					<div class="modal-body">					
+					<div class="modal-body">	
+						
+								
 						<div class="form-group">
 							<label>Nombre</label>
 							<input type="text" class="form-control" required>

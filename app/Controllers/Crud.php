@@ -7,13 +7,11 @@ class Crud extends BaseController
     
     public function index()
     {
-        $table = new \CodeIgniter\View\Table();
         $userModel = model('userModel');
-        $users = $userModel->findAll();
+        $data['users'] = $userModel->findAll();
         return view('crud', $data);
-
-        print_r($userModel->findAll());
     }
+
     public function create()
     {
         $data=[
@@ -25,7 +23,9 @@ class Crud extends BaseController
         ];
         $userModel=model('userModel');
         $userModel->insert($data);
-        return view('crud');
+        
+        $data['users'] = $userModel->findAll();
+        return view('crud', $data);
     }
 
 }
