@@ -1,0 +1,24 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+.fondo{
+    background: rgb(95,43,215);
+background: linear-gradient(90deg, rgba(95,43,215,1) 0%, rgba(181,37,209,1) 50%, rgba(95,43,215,1) 100%); 
+}
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
