@@ -66,6 +66,7 @@ $(document).ready(function(){
 						</tr>
 					</thead>
 					<tbody>
+						<?php if($users): ?>
 						<?php foreach ($users as $user):?>
 						<tr>
 							<td><?php echo $user['id'];?></td>
@@ -74,25 +75,14 @@ $(document).ready(function(){
 							<td><?php echo $user['office'];?></td>
 							<td><?php echo $user['phone'];?></td>
 							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+								<a href="#editEmployeeModal" data-id="<?= $user['id'];?>" data-name="<?= $user['name'];?>" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+								<a href="<?php echo base_url('delete/'.$user['id']);?>"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
 							</td>
 						</tr>
     					<?php endforeach;?>
+						<?php endif; ?>
 					</tbody>
 				</table>
-				<div class="clearfix">
-					<div class="hint-text">Mostrando <b>5</b> de <b>25</b> entradas</div>
-					<ul class="pagination">
-						<li class="page-item disabled"><a href="#">Anterior</a></li>
-						<li class="page-item"><a href="#" class="page-link">1</a></li>
-						<li class="page-item"><a href="#" class="page-link">2</a></li>
-						<li class="page-item active"><a href="#" class="page-link">3</a></li>
-						<li class="page-item"><a href="#" class="page-link">4</a></li>
-						<li class="page-item"><a href="#" class="page-link">5</a></li>
-						<li class="page-item"><a href="#" class="page-link">Siguiente</a></li>
-					</ul>
-				</div>
 			</div>
 		</div>        
 	</div>
@@ -100,7 +90,7 @@ $(document).ready(function(){
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="<?= site_url('crud')?>" method=post>
+				<form action="<?= site_url('/submit-form')?>" method="post">
 					<div class="modal-header">						
 						<h4 class="modal-title">Agregar Profesor</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -140,11 +130,12 @@ $(document).ready(function(){
 		</div>
 	</div>
 	<!-- Edit Modal HTML -->
-	<div id="editEmployeeModal" class="modal fade">
+	<div id="editEmployeeModal" class="modal fade" action="<?= site_url('/update') ?>" method="post">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form action="<?= site_url('crud')?>" method=post>
-					<div class="modal-header">						
+					<div class="modal-header">					
+					<h1><?php echo $user['id'];?></h1>	
 						<h4 class="modal-title">Editar Profesor</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>

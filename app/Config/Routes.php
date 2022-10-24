@@ -37,8 +37,11 @@ $routes->set404Override();
 $routes->get('/login', 'LoginController::index');
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/crud', 'Crud::index');
-$routes->post('/crud', 'Crud::create');
+$routes->get('crud', 'Crud::index');
+$routes->post('submit-form', 'Crud::create');
+$routes->get('edit-view/(:num)', 'Crud::singleUser/$1');
+$routes->post('update', 'Crud::update');
+$routes->get('delete/(:num)', 'Crud::delete/$1');
 //routes from dashboard
 $routes->get('/dashboard', 'DashboardController::index');
 /*
